@@ -1,0 +1,38 @@
+scalar DateTime
+
+type Post {
+  id: Int!
+  content: String!
+  title: String!
+  likes: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+  authorId: Int!
+}
+
+input CreatePostInput {
+  content: String!
+  title: String!
+  likes: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+  authorId: Int!
+}
+
+input UpdatePostInput {
+  id: Int!
+  content: String
+  title: String
+  likes: Int
+}
+
+type Query {
+  posts: [Post]!
+  post(id: Int!): Post
+}
+
+type Mutation {
+  createPost(createPostInput: CreatePostInput!): Post!
+  updatePost(updatePostInput: UpdatePostInput!): Post!
+  removePost(id: Int!): Post
+}
